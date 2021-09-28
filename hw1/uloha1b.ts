@@ -31,8 +31,9 @@ alphabetArray.forEach(letter => {
 
 Array.from(userSurname).forEach(letterInUserSurname => {
     userSurnameMap.set(letterInUserSurname, alphabetArray.findIndex(letterInAlphabet => { return letterInAlphabet.toLowerCase() === letterInUserSurname.toLowerCase() }));
-    encryptedSurnameMap.set(getEncryptedLetter(encryptedAlphabetMap.get(letterInUserSurname.toLowerCase())), encryptedAlphabetMap.get(letterInUserSurname.toLowerCase()));
-    encryptedSurname += getEncryptedLetter(encryptedAlphabetMap.get(letterInUserSurname.toLowerCase()));
+    const encryptedLetter = getEncryptedLetter(encryptedAlphabetMap.get(letterInUserSurname.toLowerCase())) ? getEncryptedLetter(encryptedAlphabetMap.get(letterInUserSurname.toLowerCase())) : '';
+    encryptedSurnameMap.set(encryptedLetter, encryptedAlphabetMap.get(letterInUserSurname.toLowerCase()));
+    encryptedSurname += encryptedLetter;
 });
 
 
