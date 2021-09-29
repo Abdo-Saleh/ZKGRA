@@ -1,32 +1,45 @@
-let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+console.time('codezup');
 
-// ABCD
+const alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+    'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+const alphabetMap = new Map();
+const encryptedAlphabetMap = new Map();
 
-// 0,1,2,3
+const userSurname = 'abcd';
+const userSurnameMap = new Map();
+const encryptedSurnameMap = new Map();
+let encryptedSurname = '';
 
-// 3,2,1,0
+function getEncryptedLetter(indexOfLetter) {
+    if (indexOfLetter >= 0 && indexOfLetter <= 25)
+        return alphabetArray[indexOfLetter];
 
-let plainText = 'SALEH';
-let encryptedText = '';
-let digitalRepresentaion = [];
+    return undefined;
+};
 
-let reversedDigitalRepresentaion = [];
-
-Array.from(plainText).forEach(plainTextLetter => {
-    let letterIndex = alphabet.findIndex(letter => letter == plainTextLetter);
-    digitalRepresentaion.push(letterIndex);
+alphabetArray.forEach(letter => {
+    alphabetMap.set(letter.toLowerCase(), alphabetArray.indexOf(letter, 0));
 });
 
-
-digitalRepresentaion.forEach(letterIndex => {
-    reversedDigitalRepresentaion.push((alphabet.length - 1) - letterIndex);
+alphabetArray.forEach(letter => {
+    encryptedAlphabetMap.set(letter.toLowerCase(), 25 - alphabetArray.indexOf(letter, 0));
 });
 
-reversedDigitalRepresentaion.forEach(letterIndex => {
-    encryptedText += alphabet[letterIndex];
+Array.from(userSurname).forEach(letter => {
+    userSurnameMap.set(letter, alphabetArray.findIndex(letterInAlphabet => { return letterInAlphabet.toLowerCase() === letter.toLowerCase() }));
+    const encryptedLetter = getEncryptedLetter(encryptedAlphabetMap.get(letter.toLowerCase())) ? getEncryptedLetter(encryptedAlphabetMap.get(letter.toLowerCase())) : '';
+    encryptedSurnameMap.set(encryptedLetter, encryptedAlphabetMap.get(letter.toLowerCase()));
+    encryptedSurname += encryptedLetter;
+
 });
 
-console.log(encryptedText);
+console.log(userSurname);
+console.log(userSurnameMap);
+
+console.log(encryptedSurname);
+console.log(encryptedSurnameMap);
+
+console.timeEnd('codezup');
 
 
 

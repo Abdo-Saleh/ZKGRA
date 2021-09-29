@@ -1,8 +1,11 @@
+console.time('codezup');
+
 const alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
     'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 const alphabetMap = new Map();
 const encryptedAlphabetMap = new Map();
-const userSurname = 'Saleh';
+
+const userSurname = 'abcd';
 const userSurnameMap = new Map();
 const encryptedSurnameMap = new Map();
 let encryptedSurname = '';
@@ -45,3 +48,4 @@ console.log(encryptedSurnameMap);
 
 
 
+console.timeEnd('codezup');
